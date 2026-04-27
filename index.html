@@ -4,28 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Método Claude Code — Assistência Técnica</title>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2724781137901467');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=2724781137901467&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+<meta name="description" content="Método Claude Code para Assistência Técnica. Sistema completo de gestão, CRM, automação, marketing e IA para donos de assistência técnica.">
+
+<!-- Preconnect para domínios externos críticos -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://img.youtube.com" crossorigin>
+<link rel="dns-prefetch" href="https://connect.facebook.net">
+
+<!-- Google Fonts carregado de forma assíncrona para não bloquear render -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
 
 <style>
+/* Garante que texto aparece mesmo antes das fontes carregarem */
+@font-face { font-display: swap; }
+
 :root {
   --bg: #080808;
   --bg-2: #0f0f0f;
@@ -43,6 +37,12 @@ src="https://www.facebook.com/tr?id=2724781137901467&ev=PageView&noscript=1"
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
+
+/* Otimização de render para seções abaixo do fold */
+#entregaveis, #diferencial, #mudancas, #para-quem, #objecoes, #depoimentos, #autoridade, #garantia {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
 
 body {
   background: var(--bg);
@@ -2003,7 +2003,7 @@ footer p {
       <!-- Coluna esquerda: perfil + bio -->
       <div class="autoridade-perfil reveal">
         <div class="autoridade-foto-wrap">
-          <img src="Fotos Fábio/Fabio Porcelli.PNG" alt="Fábio Porcelli" class="autoridade-foto-principal">
+          <img src="Fotos Fábio/Fabio Porcelli.PNG" alt="Fábio Porcelli" class="autoridade-foto-principal" loading="lazy" decoding="async">
           <div class="autoridade-badge-flutuante">
             <span>🏅</span>
             <span>Especialista em IA<br>para Assistência Técnica</span>
@@ -2070,9 +2070,9 @@ footer p {
 
         <!-- Fotos de evento -->
         <div class="autoridade-fotos-grid">
-          <img src="Fotos Fábio/Foto-Fabio-Palestrando.jpeg" alt="Fábio palestrando" class="autoridade-foto-evento">
-          <img src="Fotos Fábio/Fábio-Porcelli-palestrando-na-Expo-Cajamar (1).jpg" alt="Fábio na Expo Cajamar" class="autoridade-foto-evento">
-          <img src="Fotos Fábio/Fábio Porcelli (1).png" alt="Fábio Porcelli" class="autoridade-foto-evento">
+          <img src="Fotos Fábio/Foto-Fabio-Palestrando.jpeg" alt="Fábio palestrando" class="autoridade-foto-evento" loading="lazy" decoding="async">
+          <img src="Fotos Fábio/Fábio-Porcelli-palestrando-na-Expo-Cajamar (1).jpg" alt="Fábio na Expo Cajamar" class="autoridade-foto-evento" loading="lazy" decoding="async">
+          <img src="Fotos Fábio/Fábio Porcelli (1).png" alt="Fábio Porcelli" class="autoridade-foto-evento" loading="lazy" decoding="async">
         </div>
       </div>
 
@@ -2294,5 +2294,22 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 </script>
 
+<!-- Meta Pixel Code — carregado após o conteúdo para não bloquear render -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2724781137901467');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2724781137901467&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </body>
 </html>
