@@ -1184,6 +1184,123 @@ footer p {
 }
 
 /* ══════════════════════════════════════════
+   DEPOIMENTOS
+══════════════════════════════════════════ */
+#depoimentos {
+  padding: 110px 0;
+  background: var(--bg-2);
+}
+
+.depo-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.depo-subtitle {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin-top: 16px;
+}
+
+.depo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.depo-card {
+  background: var(--bg-3);
+  border: 1px solid var(--border-dim);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.depo-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+.depo-thumb {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  background: #000;
+}
+
+.depo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0.85;
+}
+
+.depo-card:hover .depo-thumb img {
+  transform: scale(1.04);
+  opacity: 1;
+}
+
+.depo-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: rgba(0,0,0,0.3);
+  transition: background 0.2s;
+}
+
+.depo-play::before {
+  content: '';
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  background: var(--orange);
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(249,115,22,0.5);
+  transition: transform 0.2s;
+}
+
+.depo-play span, .depo-play {
+  position: relative;
+  z-index: 1;
+}
+
+.depo-card:hover .depo-play::before {
+  transform: scale(1.1);
+}
+
+.depo-thumb iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.depo-body {
+  padding: 18px 20px;
+}
+
+.depo-stars {
+  color: var(--amber);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+
+.depo-text {
+  font-size: 0.88rem;
+  color: rgba(245,240,235,0.8);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* ══════════════════════════════════════════
    AUTORIDADE
 ══════════════════════════════════════════ */
 #autoridade {
@@ -1376,6 +1493,7 @@ footer p {
   .objecao-question { padding: 20px 20px; }
   .objecao-answer-inner { margin-left: 20px; }
   .mudancas-grid { grid-template-columns: 1fr 1fr; }
+  .depo-grid { grid-template-columns: repeat(2, 1fr); }
   .autoridade-layout { grid-template-columns: 1fr; gap: 40px; }
   .autoridade-foto-principal { height: 300px; }
   .autoridade-badge-flutuante { right: 0; bottom: -20px; }
@@ -1387,6 +1505,7 @@ footer p {
   .mudancas-grid { grid-template-columns: 1fr; }
   .cards-grid { grid-template-columns: 1fr; }
   .oferta-trust-row { flex-direction: column; gap: 10px; }
+  .depo-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -1741,6 +1860,111 @@ footer p {
 <!-- ════════════════════════════════════════
   AUTORIDADE
 ════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════
+  DEPOIMENTOS
+════════════════════════════════════════ -->
+<section id="depoimentos">
+  <div class="container--wide">
+    <div class="depo-header reveal">
+      <div class="tag">Prova Real</div>
+      <h2 class="section-title" style="margin-top:16px;">O que donos de assistência<br>estão <span>dizendo</span></h2>
+      <p class="depo-subtitle">Depoimentos reais de quem já passou pela nossa estrutura</p>
+    </div>
+
+    <div class="depo-grid">
+
+      <div class="depo-card reveal reveal-delay-1">
+        <div class="depo-thumb" onclick="loadDepoYT(this,'LP1xRcs2s3Q')">
+          <img src="https://img.youtube.com/vi/LP1xRcs2s3Q/hqdefault.jpg" alt="Depoimento" loading="lazy">
+          <div class="depo-play">▶</div>
+        </div>
+        <div class="depo-body">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"A automação transformou completamente a forma como atendemos. Não perco mais nenhum lead."</p>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-delay-2">
+        <div class="depo-thumb" onclick="loadDepoYT(this,'TAavdNlb5x4')">
+          <img src="https://img.youtube.com/vi/TAavdNlb5x4/hqdefault.jpg" alt="Depoimento" loading="lazy">
+          <div class="depo-play">▶</div>
+        </div>
+        <div class="depo-body">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"O sistema de follow-up automático me deu liberdade de focar na bancada enquanto a IA vende."</p>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-delay-3">
+        <div class="depo-thumb" onclick="loadDepoYT(this,'wYihS8gvx9M')">
+          <img src="https://img.youtube.com/vi/wYihS8gvx9M/hqdefault.jpg" alt="Depoimento" loading="lazy">
+          <div class="depo-play">▶</div>
+        </div>
+        <div class="depo-body">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"Impressionante como a ferramenta entende o contexto do cliente e direciona para o fechamento."</p>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-delay-4">
+        <div class="depo-thumb" onclick="loadDepoYT(this,'01rgeUQbPqc')">
+          <img src="https://img.youtube.com/vi/01rgeUQbPqc/hqdefault.jpg" alt="Depoimento" loading="lazy">
+          <div class="depo-play">▶</div>
+        </div>
+        <div class="depo-body">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"A IA mudou o jogo da minha loja. Clientes chegam prontos para fechar."</p>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-delay-5">
+        <div class="depo-thumb" onclick="loadDepoYT(this,'zhHo-P__hVc')">
+          <img src="https://img.youtube.com/vi/zhHo-P__hVc/hqdefault.jpg" alt="Depoimento" loading="lazy">
+          <div class="depo-play">▶</div>
+        </div>
+        <div class="depo-body">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"Nunca imaginei que com vídeos e IA eu conseguiria atrair esse volume de clientes novos."</p>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-delay-6">
+        <div class="depo-thumb" onclick="loadDepoYT(this,'WvQE916Knds')">
+          <img src="https://img.youtube.com/vi/WvQE916Knds/hqdefault.jpg" alt="Depoimento" loading="lazy">
+          <div class="depo-play">▶</div>
+        </div>
+        <div class="depo-body">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"Em menos de uma semana já recebi mensagens de clientes novos que viram meu conteúdo."</p>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-delay-1">
+        <div class="depo-thumb" onclick="loadDepoYT(this,'W-DL16HZWdQ')">
+          <img src="https://img.youtube.com/vi/W-DL16HZWdQ/hqdefault.jpg" alt="Depoimento" loading="lazy">
+          <div class="depo-play">▶</div>
+        </div>
+        <div class="depo-body">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"O método é simples e prático. Criei o primeiro vídeo em 5 minutos e já tive resultado."</p>
+        </div>
+      </div>
+
+      <div class="depo-card reveal reveal-delay-2">
+        <div class="depo-thumb" onclick="loadDepoYT(this,'cX_HmZVfaqI')">
+          <img src="https://img.youtube.com/vi/cX_HmZVfaqI/hqdefault.jpg" alt="Depoimento" loading="lazy">
+          <div class="depo-play">▶</div>
+        </div>
+        <div class="depo-body">
+          <div class="depo-stars">★★★★★</div>
+          <p class="depo-text">"Minha assistência virou referência na cidade. As pessoas já me conhecem antes de entrar na loja."</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section id="autoridade">
   <div class="container">
     <div class="autoridade-layout">
@@ -2000,6 +2224,11 @@ footer p {
   JS — Scroll reveal + Accordion
 ════════════════════════════════════════ -->
 <script>
+// YouTube lazy load para depoimentos
+function loadDepoYT(el, videoId) {
+  el.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+}
+
 // Scroll reveal
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
