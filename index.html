@@ -1256,29 +1256,37 @@ footer p {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.35);
   transition: background 0.2s;
 }
 
 .depo-play::before {
   content: '';
   position: absolute;
-  width: 52px;
-  height: 52px;
-  background: var(--orange);
-  border-radius: 50%;
-  box-shadow: 0 4px 20px rgba(249,115,22,0.5);
-  transition: transform 0.2s;
+  width: 56px;
+  height: 56px;
+  background: #ff0000;
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(255,0,0,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.depo-play span, .depo-play {
+.depo-play::after {
+  content: '▶';
   position: relative;
   z-index: 1;
+  font-size: 1.2rem;
+  color: #fff;
+  margin-left: 4px;
 }
 
 .depo-card:hover .depo-play::before {
-  transform: scale(1.1);
+  transform: scale(1.12);
+  box-shadow: 0 6px 28px rgba(255,0,0,0.6);
+}
+
+.depo-card:hover .depo-play {
+  background: rgba(0,0,0,0.2);
 }
 
 .depo-thumb iframe {
@@ -2230,11 +2238,9 @@ footer p {
   JS — Scroll reveal + Accordion
 ════════════════════════════════════════ -->
 <script>
-// YouTube lazy load para depoimentos
+// Abre vídeo no YouTube em nova aba
 function loadDepoYT(el, videoId) {
-  el.style.cursor = 'default';
-  el.onclick = null;
-  el.innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="display:block;width:100%;height:100%;border:0;position:absolute;top:0;left:0;"></iframe>`;
+  window.open('https://www.youtube.com/watch?v=' + videoId, '_blank');
 }
 
 // Scroll reveal
