@@ -6,18 +6,23 @@
 <title>Método Claude Code — Assistência Técnica</title>
 <meta name="description" content="Método Claude Code para Assistência Técnica. Sistema completo de gestão, CRM, automação, marketing e IA para donos de assistência técnica.">
 
-<!-- Preconnect para domínios externos críticos -->
+<!-- Preconnect críticos -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://img.youtube.com" crossorigin>
+<link rel="dns-prefetch" href="https://img.youtube.com">
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 
-<!-- Google Fonts carregado de forma assíncrona para não bloquear render -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
+<!-- Preload Bebas Neue (fonte do LCP — título hero) -->
+<link rel="preload" as="font" type="font/woff2" crossorigin
+  href="https://fonts.gstatic.com/s/bebasneue/v21/JTUSjIg69CK48gW7PXooxW5rygbi49c.woff2">
+
+<!-- Google Fonts async — não bloqueia render -->
+<link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
+  href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap">
+<noscript><link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
 
 <style>
-/* Garante que texto aparece mesmo antes das fontes carregarem */
 @font-face { font-display: swap; }
 
 :root {
@@ -38,10 +43,18 @@
 
 html { scroll-behavior: smooth; }
 
-/* Otimização de render para seções abaixo do fold */
-#entregaveis, #diferencial, #mudancas, #para-quem, #objecoes, #depoimentos, #autoridade, #garantia {
+/* content-visibility apenas em seções deep (abaixo de 2 dobras) */
+#diferencial, #mudancas, #para-quem, #objecoes, #garantia {
   content-visibility: auto;
-  contain-intrinsic-size: 0 600px;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Fallback system fonts enquanto Bebas Neue / DM Sans carregam */
+.hero-title, .section-title, .cta-final-title, .garantia-title, .oferta-title {
+  font-family: 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+}
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 body {
@@ -2262,54 +2275,56 @@ function loadDepoYT(el, videoId) {
   el.innerHTML = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"></iframe>';
 }
 
-// Scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-revealEls.forEach(el => observer.observe(el));
+// Scroll reveal — IntersectionObserver com passive e sem forçar reflow
+(function() {
+  var revealEls = document.querySelectorAll('.reveal');
+  if (!revealEls.length) return;
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+  revealEls.forEach(function(el) { io.observe(el); });
+})();
 
 // Accordion objeções
 function toggleObjecao(item) {
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.objecao-item.open').forEach(i => i.classList.remove('open'));
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.objecao-item.open').forEach(function(i) { i.classList.remove('open'); });
   if (!isOpen) item.classList.add('open');
 }
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  }, { passive: false });
 });
 </script>
 
-<!-- Meta Pixel Code — carregado após o conteúdo para não bloquear render -->
+<!-- Meta Pixel — carregado 4s após load para não impactar TBT/LCP -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2724781137901467');
-fbq('track', 'PageView');
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2724781137901467');
+    fbq('track', 'PageView');
+  }, 4000);
+});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=2724781137901467&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
 </body>
 </html>
